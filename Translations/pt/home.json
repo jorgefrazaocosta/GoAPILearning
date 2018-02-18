@@ -1,13 +1,13 @@
 [
     {
-        "locale": "en",
+        "locale": "pt",
         "key": "days-left",
         "trans": "Falta {0} dia",
         "type": "Cardinal",
         "rule": "One"
     },
     {
-        "locale": "en",
+        "locale": "pt",
         "key": "days-left",
         "trans": "Faltam {0} dias",
         "type": "Cardinal",

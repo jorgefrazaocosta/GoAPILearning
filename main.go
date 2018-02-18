@@ -1,9 +1,9 @@
 package main
 
-import (   
-    "HelloWorldAPI/routes"
+import (
+	"APILearning/routes"
 )
 
-func main() {    
-    routes.SetupRoutes()
+func main() {
+	routes.SetupRoutes()
 }
