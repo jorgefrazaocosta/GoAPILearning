@@ -1,8 +1,6 @@
 package main
 
-import (
-	"APILearning/routes"
-)
+import "api-learning/routes"
 
 func main() {
 	routes.SetupRoutes()
