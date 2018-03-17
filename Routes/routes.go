@@ -1,7 +1,6 @@
 package routes
 
 import (
-	validator "api-learning/components/validator"
 	beer "api-learning/controllers/beer"
 	session "api-learning/controllers/session"
 	user "api-learning/controllers/user"
@@ -17,8 +16,6 @@ func SetupRoutes() {
 
 	setupRoutesWithoutAccessToken(e)
 	setupRouterAccessTokenRequired(e)
-
-	validator.SetupValidator()
 
 	e.Logger.Fatal(e.Start(":1323"))
 
@@ -38,5 +35,6 @@ func setupRouterAccessTokenRequired(e *echo.Echo) {
 	e.POST("user", user.CreateUser)
 	e.PUT("user", user.UpdateUser)
 	e.GET("beer/:id", beer.GetBeer)
+	e.POST("beer", beer.CreateBeer)
 
 }

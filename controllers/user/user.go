@@ -22,7 +22,7 @@ func CreateUser(c echo.Context) error {
 	}
 
 	if err := validator.ValidateStruct(c, u); err != nil {
-		return err
+		return c.JSON(http.StatusBadRequest, err)
 	}
 
 	return c.JSON(http.StatusCreated, u)

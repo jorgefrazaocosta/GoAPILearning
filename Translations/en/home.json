@@ -12,5 +12,20 @@
         "trans": "There are {0} days left",
         "type": "Cardinal",
         "rule": "Other"
+    },
+    {
+        "locale": "en",
+        "key": "required",
+        "trans": "The field {0} is required."
+    },
+    {
+        "locale": "en",
+        "key": "email",
+        "trans": "The field {0} is not in the correct format."
+    },
+    {
+        "locale": "en",
+        "key": "unknown",
+        "trans": "An unexpected error ocurred."
     }
 ]

@@ -12,5 +12,26 @@
         "trans": "Faltam {0} dias",
         "type": "Cardinal",
         "rule": "Other"
+    },
+    {
+        "locale": "pt",
+        "key": "days",
+        "trans": "Faltam {0} dias {1}",
+        "type": "Cardinal"
+    },
+    {
+        "locale": "pt",
+        "key": "required",
+        "trans": "O campo de {0} é obrigatório."
+    },
+    {
+        "locale": "pt",
+        "key": "email",
+        "trans": "O campo de {0} não se encontra no formato correcto."
+    },
+    {
+        "locale": "pt",
+        "key": "unknown",
+        "trans": "Ocorreu um erro inesperado."
     }
 ]
