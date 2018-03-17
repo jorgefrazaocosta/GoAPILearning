@@ -2,7 +2,6 @@ package Beer
 
 import (
 	"api-learning/components/validator"
-	"fmt"
 	"net/http"
 
 	m "api-learning/models"
@@ -18,8 +17,6 @@ func GetBeer(c echo.Context) error {
 }
 
 func CreateBeer(c echo.Context) error {
-
-	fmt.Printf("Accept-Language %s", c.Request().Header.Get("Accept-Language"))
 
 	b := new(m.Beer)
 
