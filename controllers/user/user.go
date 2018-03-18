@@ -1,8 +1,10 @@
 package User
 
 import (
+	"database/sql"
 	"net/http"
 
+	database "api-learning/components/database"
 	validator "api-learning/components/validator"
 	m "api-learning/models"
 
@@ -10,7 +12,18 @@ import (
 )
 
 func GetUser(c echo.Context) error {
-	return c.String(http.StatusOK, "Olá")
+
+	u := m.User{ID: "58c080c98a34f"}
+	if err := u.GetUser(database.DB); err != nil {
+		switch err {
+		case sql.ErrNoRows:
+			return c.JSON(http.StatusBadRequest, "User not found")
+		}
+		return c.JSON(http.StatusBadRequest, err.Error())
+	}
+
+	return c.JSON(http.StatusOK, u)
+
 }
 
 func CreateUser(c echo.Context) error {
