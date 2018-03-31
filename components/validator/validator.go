@@ -5,8 +5,8 @@ import (
 
 	"github.com/labstack/echo"
 
-	localize "api-learning/components/localization"
-	m "api-learning/models"
+	localize "api.beermenu.com/components/localization"
+	m "api.beermenu.com/models"
 
 	validator "gopkg.in/go-playground/validator.v9"
 )

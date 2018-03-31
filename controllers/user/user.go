@@ -4,9 +4,9 @@ import (
 	"database/sql"
 	"net/http"
 
-	database "api-learning/components/database"
-	validator "api-learning/components/validator"
-	m "api-learning/models"
+	database "api.beermenu.com/components/database"
+	validator "api.beermenu.com/components/validator"
+	m "api.beermenu.com/models"
 
 	"github.com/labstack/echo"
 )

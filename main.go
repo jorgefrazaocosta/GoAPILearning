@@ -1,6 +1,6 @@
 package main
 
-import "api-learning/routes"
+import "api.beermenu.com/routes"
 
 func main() {
 	routes.SetupRoutes()

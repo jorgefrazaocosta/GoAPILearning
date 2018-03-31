@@ -1,9 +1,10 @@
 package routes
 
 import (
-	beer "api-learning/controllers/beer"
-	session "api-learning/controllers/session"
-	user "api-learning/controllers/user"
+	authentication "api.beermenu.com/components/middleware"
+	beer "api.beermenu.com/controllers/beer"
+	session "api.beermenu.com/controllers/session"
+	user "api.beermenu.com/controllers/user"
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
@@ -31,10 +32,10 @@ func setupRoutesWithoutAccessToken(e *echo.Echo) {
 
 func setupRouterAccessTokenRequired(e *echo.Echo) {
 
-	e.GET("user", user.GetUser)
-	e.POST("user", user.CreateUser)
-	e.PUT("user", user.UpdateUser)
-	e.GET("beer/:id", beer.GetBeer)
-	e.POST("beer", beer.CreateBeer)
+	e.GET("user", user.GetUser, authentication.CustomJWT())
+	e.POST("user", user.CreateUser, authentication.CustomJWT())
+	e.PUT("user", user.UpdateUser, authentication.CustomJWT())
+	e.GET("beer/:id", beer.GetBeer, authentication.CustomJWT())
+	e.POST("beer", beer.CreateBeer, authentication.CustomJWT())
 
 }

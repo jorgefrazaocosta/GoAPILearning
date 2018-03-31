@@ -1,10 +1,11 @@
 package Beer
 
 import (
-	"api-learning/components/validator"
 	"net/http"
 
-	m "api-learning/models"
+	"api.beermenu.com/components/validator"
+
+	m "api.beermenu.com/models"
 
 	"github.com/labstack/echo"
 )
