@@ -15,27 +15,29 @@ func SetupRoutes() {
 	e := echo.New()
 	e.Use(middleware.Logger())
 
-	setupRoutesWithoutAccessToken(e)
-	setupRouterAccessTokenRequired(e)
+	g := e.Group("v1/")
+
+	setupRoutesWithoutAccessToken(g)
+	setupRouterAccessTokenRequired(g)
 
 	e.Logger.Fatal(e.Start(":1323"))
 
 }
 
-func setupRoutesWithoutAccessToken(e *echo.Echo) {
+func setupRoutesWithoutAccessToken(g *echo.Group) {
 
-	e.POST("signup", session.SignUp)
-	e.POST("signin", session.SignIn)
-	e.POST("recover-password", session.RecoverPassword)
+	g.POST("signup", session.SignUp)
+	g.POST("signin", session.SignIn)
+	g.POST("recover-password", session.RecoverPassword)
 
 }
 
-func setupRouterAccessTokenRequired(e *echo.Echo) {
+func setupRouterAccessTokenRequired(g *echo.Group) {
 
-	e.GET("user", user.GetUser, authentication.CustomJWT())
-	e.POST("user", user.CreateUser, authentication.CustomJWT())
-	e.PUT("user", user.UpdateUser, authentication.CustomJWT())
-	e.GET("beer/:id", beer.GetBeer, authentication.CustomJWT())
-	e.POST("beer", beer.CreateBeer, authentication.CustomJWT())
+	g.GET("user", user.GetUser, authentication.CustomJWT())
+	g.POST("user", user.CreateUser, authentication.CustomJWT())
+	g.PUT("user", user.UpdateUser, authentication.CustomJWT())
+	g.GET("beer/:id", beer.GetBeer, authentication.CustomJWT())
+	g.POST("beer", beer.CreateBeer, authentication.CustomJWT())
 
 }
