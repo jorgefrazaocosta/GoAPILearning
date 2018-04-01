@@ -10,9 +10,10 @@ type ServerError struct {
 }
 
 type User struct {
-	ID    string `json:"userId"`
-	Name  string `json:"name" form:"name" query:"name" binding:"required" validate:"required"`
-	Email string `json:"email" form:"email" query:"email" validate:"required,email"`
+	ID          string `json:"userId"`
+	Name        string `json:"name" form:"name" query:"name" binding:"required" validate:"required"`
+	Email       string `json:"email" form:"email" query:"email" validate:"required,email"`
+	Base64Image string `json:"image" form:"image" query:"image"`
 }
 
 func (u *User) GetUser(db *sql.DB) error {

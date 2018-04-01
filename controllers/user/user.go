@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	database "api.beermenu.com/components/database"
+	upload "api.beermenu.com/components/upload"
 	validator "api.beermenu.com/components/validator"
 	m "api.beermenu.com/models"
 
@@ -36,6 +37,10 @@ func CreateUser(c echo.Context) error {
 
 	if err := validator.ValidateStruct(c, u); err != nil {
 		return c.JSON(http.StatusBadRequest, err)
+	}
+
+	if res, _ := upload.Image(u.Base64Image, "users"); res == false {
+		return c.JSON(http.StatusBadRequest, "Não foi possivel fazer o upload da image")
 	}
 
 	return c.JSON(http.StatusCreated, u)
