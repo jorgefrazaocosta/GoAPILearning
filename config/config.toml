@@ -1,0 +1,12 @@
+[owner]
+name = "Jorge Costa"
+
+[database]
+server = "localhost"
+port = 8889
+name = "WineMenu"
+user = "root"
+password = "root"
+
+[sendgrid]
+api_key = "dsada"
