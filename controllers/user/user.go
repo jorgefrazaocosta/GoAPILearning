@@ -43,7 +43,7 @@ func CreateUser(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, "Não foi possivel fazer o upload da image")
 	}
 
-	return c.JSON(http.StatusCreated, u)
+	return c.JSON(http.StatusCreated, u.Cleaned())
 
 }
 
