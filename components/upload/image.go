@@ -6,14 +6,11 @@ import (
 	"image/jpeg"
 	"image/png"
 	"io"
-	"log"
 	"os"
 	"strings"
 )
 
 func Image(data string, to string) (bool, string) {
-
-	log.Println("image upload")
 
 	result, commaPosition := isValid(data)
 	if !result {
@@ -21,7 +18,7 @@ func Image(data string, to string) (bool, string) {
 	}
 
 	format := extractFormat(data, commaPosition)
-	imageName := "novaimage." + format
+	imageName := "images/novaimage." + format
 
 	dst, err := os.Create(imageName)
 	if err != nil {
