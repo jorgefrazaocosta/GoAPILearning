@@ -10,3 +10,6 @@ password = "root"
 
 [sendgrid]
 api_key = "dsada"
+
+[default_properties]
+bundle = "demo.com.pt"

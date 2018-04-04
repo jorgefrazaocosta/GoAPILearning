@@ -1,19 +1,20 @@
 package routes
 
 import (
-	authentication "api.beermenu.com/components/middleware"
+	middleware "api.beermenu.com/components/middleware"
 	beer "api.beermenu.com/controllers/beer"
 	session "api.beermenu.com/controllers/session"
 	user "api.beermenu.com/controllers/user"
 
 	"github.com/labstack/echo"
-	"github.com/labstack/echo/middleware"
+	middlewareEcho "github.com/labstack/echo/middleware"
 )
 
 func SetupRoutes() {
 
 	e := echo.New()
-	e.Use(middleware.Logger())
+	e.Use(middlewareEcho.Logger())
+	e.Use(middleware.DefaultProperties())
 
 	g := e.Group("v1/")
 
@@ -34,10 +35,10 @@ func setupRoutesWithoutAccessToken(g *echo.Group) {
 
 func setupRouterAccessTokenRequired(g *echo.Group) {
 
-	g.GET("user", user.GetUser, authentication.CustomJWT())
-	g.POST("user", user.CreateUser, authentication.CustomJWT())
-	g.PUT("user", user.UpdateUser, authentication.CustomJWT())
-	g.GET("beer/:id", beer.GetBeer, authentication.CustomJWT())
-	g.POST("beer", beer.CreateBeer, authentication.CustomJWT())
+	g.GET("user", user.GetUser, middleware.CustomJWT())
+	g.POST("user", user.CreateUser, middleware.CustomJWT())
+	g.PUT("user", user.UpdateUser, middleware.CustomJWT())
+	g.GET("beer/:id", beer.GetBeer, middleware.CustomJWT())
+	g.POST("beer", beer.CreateBeer, middleware.CustomJWT())
 
 }

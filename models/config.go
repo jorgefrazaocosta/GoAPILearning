@@ -1,9 +1,10 @@
 package models
 
 type TomlConfig struct {
-	Owner    OwnerInfo
-	DB       Database `toml:"database"`
-	SendGrid Sendgrid
+	Owner             OwnerInfo
+	DB                Database `toml:"database"`
+	SendGrid          Sendgrid
+	DefaultProperties Defaultproperties `toml:"default_properties"`
 }
 
 type OwnerInfo struct {
@@ -20,4 +21,8 @@ type Database struct {
 
 type Sendgrid struct {
 	APIKEY string `toml:"api_key"`
+}
+
+type Defaultproperties struct {
+	Bundle string
 }
