@@ -16,15 +16,19 @@ import (
 func GetUser(c echo.Context) error {
 
 	u := m.User{ID: "58c080c98a34f"}
+
 	if err := u.GetUser(database.DB); err != nil {
+
 		switch err {
 		case sql.ErrNoRows:
-			return c.JSON(http.StatusBadRequest, "User not found")
+			return response.ErrorBadRequestWithKey(c, "User.Error.NotFound")
 		}
+
 		return c.JSON(http.StatusBadRequest, err.Error())
+
 	}
 
-	return c.JSON(http.StatusOK, u)
+	return response.Success(c, u.Cleaned())
 
 }
 
@@ -33,7 +37,7 @@ func CreateUser(c echo.Context) error {
 	u := new(m.User)
 
 	if err := c.Bind(u); err != nil {
-		return response.ErrorLocalizedKey(c, http.StatusBadRequest, "unknown")
+		return response.ErrorBadRequestWithKey(c, "Application.Error.Unknown")
 	}
 
 	if err := validator.ValidateStruct(c, u); err != nil {
@@ -41,7 +45,7 @@ func CreateUser(c echo.Context) error {
 	}
 
 	if res, _ := upload.Image(u.Base64Image, "users"); res == false {
-		return c.JSON(http.StatusBadRequest, "Não foi possivel fazer o upload da image")
+		return response.ErrorBadRequestWithKey(c, "Upload.Image.Error")
 	}
 
 	return response.Success(c, u.Cleaned())

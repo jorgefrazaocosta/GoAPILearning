@@ -25,7 +25,22 @@
     },
     {
         "locale": "en",
-        "key": "unknown",
+        "key": "Application.Error.Unknown",
         "trans": "An unexpected error ocurred."
+    },
+    {
+        "locale": "en",
+        "key": "User.Error.NotFound",
+        "trans": "User not found."
+    },
+    {
+        "locale": "en",
+        "key": "Upload.Image.Error",
+        "trans": "Wasn't possible upload your image"
+    },
+    {
+        "locale": "en",
+        "key": "Application.Error.Bundle",
+        "trans": "The bundle sent is not valid."
     }
 ]

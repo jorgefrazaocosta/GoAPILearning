@@ -31,7 +31,23 @@
     },
     {
         "locale": "pt",
-        "key": "unknown",
+        "key": "Application.Error.Unknown",
         "trans": "Ocorreu um erro inesperado."
+    },
+    {
+        "locale": "pt",
+        "key": "User.Error.NotFound",
+        "trans": "Utilizador não encontrado."
+    },
+    {
+        "locale": "pt",
+        "key": "Upload.Image.Error",
+        "trans": "Não foi possível realizar o upload da image."
+    },
+    {
+        "locale": "pt",
+        "key": "Application.Error.Bundle",
+        "trans": "O bundle enviado não é válido."
     }
 ]
+

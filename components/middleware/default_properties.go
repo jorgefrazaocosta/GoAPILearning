@@ -1,7 +1,10 @@
 package middleware
 
 import (
+	"net/http"
+
 	"api.beermenu.com/components/config"
+	"api.beermenu.com/components/response"
 	"github.com/labstack/echo"
 )
 
@@ -11,7 +14,14 @@ func DefaultProperties() echo.MiddlewareFunc {
 
 		return func(c echo.Context) error {
 
-			bundle := c.FormValue("bundle")
+			var bundle string
+
+			if c.Request().Method == "GET" {
+				bundle = c.Request().Header.Get("Bundle")
+			} else {
+				bundle = c.FormValue("bundle")
+			}
+
 			// deviceId := c.FormValue("deviceId")
 			// locale := c.FormValue("locale")
 
@@ -19,10 +29,7 @@ func DefaultProperties() echo.MiddlewareFunc {
 				return next(c)
 			}
 
-			return &echo.HTTPError{
-				Code:    401,
-				Message: "É necessário um bundle válido",
-			}
+			return response.ErrorKey(c, http.StatusUnauthorized, "Application.Error.Bundle")
 
 		}
 

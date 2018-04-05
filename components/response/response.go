@@ -25,9 +25,13 @@ func Error(c echo.Context, statusCode int, message string) error {
 
 }
 
-func ErrorLocalizedKey(c echo.Context, statusCode int, key string) error {
+func ErrorKey(c echo.Context, statusCode int, key string) error {
 
 	stringLocalized := localization.T(c.Request().Header.Get("Accept-Language"), key)
 	return Error(c, statusCode, stringLocalized)
 
+}
+
+func ErrorBadRequestWithKey(c echo.Context, key string) error {
+	return Error(c, http.StatusBadRequest, key)
 }
