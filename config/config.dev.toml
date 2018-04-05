@@ -1,6 +1,9 @@
 [owner]
 name = "Jorge Costa"
 
+[server]
+port = ":1323"
+
 [database]
 server = "localhost"
 port = 8889

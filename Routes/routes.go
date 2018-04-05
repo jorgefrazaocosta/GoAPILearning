@@ -1,10 +1,12 @@
 package routes
 
 import (
+	"api.beermenu.com/components/config"
 	middleware "api.beermenu.com/components/middleware"
 	beer "api.beermenu.com/controllers/beer"
 	session "api.beermenu.com/controllers/session"
 	user "api.beermenu.com/controllers/user"
+	"golang.org/x/crypto/acme/autocert"
 
 	"github.com/labstack/echo"
 	middlewareEcho "github.com/labstack/echo/middleware"
@@ -13,6 +15,7 @@ import (
 func SetupRoutes() {
 
 	e := echo.New()
+
 	e.Use(middlewareEcho.Logger())
 	e.Use(middleware.DefaultProperties())
 
@@ -21,7 +24,14 @@ func SetupRoutes() {
 	setupRoutesWithoutAccessToken(g)
 	setupRouterAccessTokenRequired(g)
 
-	e.Logger.Fatal(e.Start(":1323"))
+	if config.Data.Server.Port == ":443" {
+
+		e.AutoTLSManager.Cache = autocert.DirCache("/var/www/.cache")
+		e.Logger.Fatal(e.StartAutoTLS(config.Data.Server.Port))
+
+	} else {
+		e.Logger.Fatal(e.Start(config.Data.Server.Port))
+	}
 
 }
 

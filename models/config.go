@@ -2,9 +2,14 @@ package models
 
 type TomlConfig struct {
 	Owner             OwnerInfo
+	Server            Server
 	DB                Database `toml:"database"`
 	SendGrid          Sendgrid
 	DefaultProperties Defaultproperties `toml:"default_properties"`
+}
+
+type Server struct {
+	Port string
 }
 
 type OwnerInfo struct {
