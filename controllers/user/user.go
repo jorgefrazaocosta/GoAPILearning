@@ -48,7 +48,7 @@ func CreateUser(c echo.Context) error {
 		return response.ErrorBadRequestWithKey(c, "Upload.Image.Error")
 	}
 
-	return response.Success(c, u.Cleaned())
+	return response.SuccessWithCode(c, http.StatusCreated, u.Cleaned())
 
 }
 

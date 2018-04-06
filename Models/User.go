@@ -10,7 +10,7 @@ type ServerError struct {
 }
 
 type User struct {
-	ID          string `json:"userId"`
+	ID          string `json:"userId,omitempty"`
 	Name        string `json:"name" form:"name" query:"name" binding:"required" validate:"required"`
 	Email       string `json:"email" form:"email" query:"email" validate:"required,email"`
 	Base64Image string `json:"image,omitempty" form:"image" query:"image"`

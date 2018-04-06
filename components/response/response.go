@@ -9,10 +9,14 @@ import (
 )
 
 func Success(c echo.Context, payload interface{}) error {
+	return SuccessWithCode(c, http.StatusOK, payload)
+}
+
+func SuccessWithCode(c echo.Context, statusCode int, payload interface{}) error {
 
 	finalPayload := map[string]interface{}{"data": payload}
 
-	return c.JSON(http.StatusOK, finalPayload)
+	return c.JSON(statusCode, finalPayload)
 
 }
 
